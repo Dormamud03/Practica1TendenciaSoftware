@@ -1,4 +1,4 @@
-package com.MPFE.PracticaTendenciaSoftware.controller; 
+package com.MPFE.PracticaTendenciaSoftware.controller;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -43,10 +43,12 @@ public class AppController {
         return repository.findById(id).orElse(new App());
     }
 
-    @RequestMapping(value = "/app/name/{name}", method = RequestMethod.GET)
-    public List<App> getAppByName(@PathVariable("name") String name) {
-        return repository.findByName(name);
-    }
+    // Metodo no existente en Repositorio
+    /*
+     * @RequestMapping(value = "/app/name/{name}", method = RequestMethod.GET)
+     * public List<App> getAppByName(@PathVariable("name") String name) { return
+     * repository.findByName(name); }
+     */
 
     @RequestMapping(value = "/edit-app/{id}", method = RequestMethod.PUT)
     @ResponseBody
@@ -62,5 +64,5 @@ public class AppController {
             repository.delete(app);
         }
     }
-    
+
 }

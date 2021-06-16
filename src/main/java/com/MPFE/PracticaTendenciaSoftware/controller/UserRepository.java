@@ -1,4 +1,4 @@
-package com.MPFE.PracticaTendenciaSoftware.controller; 
+package com.MPFE.PracticaTendenciaSoftware.controller;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -19,12 +19,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @RequestMapping("/api")
 @CrossOrigin
 public class UserRepository {
-    
+
     @Autowired
     private userRepository repository;
 
@@ -43,11 +42,12 @@ public class UserRepository {
     public User getUserById(@PathVariable("id") long id) {
         return repository.findById(id).orElse(new User());
     }
-
-    @RequestMapping(value = "/user/name/{name}", method = RequestMethod.GET)
-    public List<User> getUserByName(@PathVariable("name") String name) {
-        return repository.findByName(name);
-    }
+    // Metodo no existente en Repositorio
+    /*
+     * @RequestMapping(value = "/user/name/{name}", method = RequestMethod.GET)
+     * public List<User> getUserByName(@PathVariable("name") String name) { return
+     * repository.findByName(name); }
+     */
 
     @RequestMapping(value = "/edit-user/{id}", method = RequestMethod.PUT)
     @ResponseBody
@@ -63,5 +63,5 @@ public class UserRepository {
             repository.delete(user);
         }
     }
-    
+
 }

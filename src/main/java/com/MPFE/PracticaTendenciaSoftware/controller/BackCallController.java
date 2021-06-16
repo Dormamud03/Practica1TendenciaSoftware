@@ -1,4 +1,4 @@
-package com.MPFE.PracticaTendenciaSoftware.controller; 
+package com.MPFE.PracticaTendenciaSoftware.controller;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 @CrossOrigin
 public class BackCallController {
-    
+
     @Autowired
     private backCallRepository repository;
 
@@ -43,11 +43,11 @@ public class BackCallController {
         return repository.findById(id).orElse(new BackCall());
     }
 
-    @RequestMapping(value = "/backcall/name/{name}", method = RequestMethod.GET)
-    public List<BackCall> getBackCallByName(@PathVariable("name") String name) {
-        return repository.findByName(name);
-    }
+    // Metodo no existente en Repositorio
+    /*
+     * @RequestMapping(value = "/backcall/name/{name}", method = RequestMethod.GET)
+     * public List<BackCall> getBackCallByName(@PathVariable("name") String name) {
+     * return repository.findByName(name); }
+     */
 
-
-    
 }
