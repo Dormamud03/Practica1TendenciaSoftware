@@ -1,10 +1,16 @@
 package com.MPFE.PracticaTendenciaSoftware.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +19,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "iduser", nullable = false)
     private long idUser;
 
     @Column(name = "username", nullable = false)
@@ -20,6 +27,18 @@ public class User {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "active", nullable = false)
+    private String active;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idapp", nullable = true)
+    private Application application;
+
+
+    @Column(name = "source", nullable = false)
+    private String souerce;
+
 
     private String token;
 

@@ -70,7 +70,7 @@ public class UserRepository {
         }
     }
 
-    @GetMapping("login")
+    /*@GetMapping("login")
     public User login(@RequestParam("login") String login, @RequestParam("password") String password) {
         User user = repository.loginUser(login, password);
 
@@ -84,7 +84,7 @@ public class UserRepository {
 
         return new User();
 
-    }
+    }*/
 
     private String getJWTToken(String username) {
         String secretKey = "mySecretKey";

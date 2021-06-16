@@ -1,11 +1,8 @@
 package com.MPFE.PracticaTendenciaSoftware.controller;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import com.MPFE.PracticaTendenciaSoftware.model.App;
+import com.MPFE.PracticaTendenciaSoftware.model.Application;
 import com.MPFE.PracticaTendenciaSoftware.repository.appRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,19 +25,19 @@ public class AppController {
     private appRepository repository;
 
     @GetMapping("/app")
-    public List<App> getApp() {
+    public List<Application> getApp() {
         return repository.findAll();
     }
 
     @PostMapping("/save-app")
     @ResponseBody
-    public App saveApp(@RequestBody App app) {
+    public Application saveApp(@RequestBody Application app) {
         return repository.save(app);
     }
 
     @RequestMapping(value = "/app/id/{id}", method = RequestMethod.GET)
-    public App getAppById(@PathVariable("id") long id) {
-        return repository.findById(id).orElse(new App());
+    public Application getAppById(@PathVariable("id") long id) {
+        return repository.findById(id).orElse(new Application());
     }
 
     // Metodo no existente en Repositorio
@@ -52,14 +49,14 @@ public class AppController {
 
     @RequestMapping(value = "/edit-app/{id}", method = RequestMethod.PUT)
     @ResponseBody
-    public App updateApp(@PathVariable("id") long id, @RequestBody App app) {
+    public Application updateApp(@PathVariable("id") long id, @RequestBody Application app) {
         app.setIdApp(id);
         return repository.save(app);
     }
 
     @RequestMapping(value = "/delete-app/{id}", method = RequestMethod.DELETE)
     public void deleteApp(@PathVariable("id") long id) {
-        App app = repository.findById(id).get();
+        Application app = repository.findById(id).get();
         if (app != null) {
             repository.delete(app);
         }

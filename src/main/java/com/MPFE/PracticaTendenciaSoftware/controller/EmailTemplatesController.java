@@ -1,12 +1,9 @@
 package com.MPFE.PracticaTendenciaSoftware.controller;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import com.MPFE.PracticaTendenciaSoftware.model.BackCall;
-import com.MPFE.PracticaTendenciaSoftware.repository.backCallRepository;
+import com.MPFE.PracticaTendenciaSoftware.model.EmailTemplates;
+import com.MPFE.PracticaTendenciaSoftware.repository.emailTemplates;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,25 +19,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin
-public class BackCallController {
+public class EmailTemplatesController {
 
     @Autowired
-    private backCallRepository repository;
+    private emailTemplates repository;
 
     @GetMapping("/backcall")
-    public List<BackCall> getBackCall() {
+    public List<EmailTemplates> getBackCall() {
         return repository.findAll();
     }
 
     @PostMapping("/save-backcall")
     @ResponseBody
-    public BackCall saveBackcall(@RequestBody BackCall backcall) {
+    public EmailTemplates saveBackcall(@RequestBody EmailTemplates backcall) {
         return repository.save(backcall);
     }
 
     @RequestMapping(value = "/backcall/id/{id}", method = RequestMethod.GET)
-    public BackCall getBackCallById(@PathVariable("id") long id) {
-        return repository.findById(id).orElse(new BackCall());
+    public EmailTemplates getBackCallById(@PathVariable("id") long id) {
+        return repository.findById(id).orElse(new EmailTemplates());
     }
 
     // Metodo no existente en Repositorio
