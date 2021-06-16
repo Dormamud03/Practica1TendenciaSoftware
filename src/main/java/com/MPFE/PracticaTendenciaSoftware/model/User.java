@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user")
 public class User {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idUser;
@@ -21,6 +21,8 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
+    private String token;
+
     public User() {
     }
 
@@ -29,8 +31,6 @@ public class User {
         this.userName = userName;
         this.password = password;
     }
-
-
 
     public long getIdUser() {
         return this.idUser;
@@ -54,6 +54,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
 }

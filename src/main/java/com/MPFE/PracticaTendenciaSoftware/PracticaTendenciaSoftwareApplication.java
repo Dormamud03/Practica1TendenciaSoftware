@@ -26,12 +26,7 @@ public class PracticaTendenciaSoftwareApplication {
         protected void configure(HttpSecurity http) throws Exception {
             http.cors().and().csrf().disable()
                     .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-                    .authorizeRequests().antMatchers(HttpMethod.GET, "/api/login").permitAll().anyRequest()
-                    .authenticated();
-            // cambiar nombre del metodo get al nombre correcto que este en el controller y
-            // cambiar tipo de metodo hhtp tambien si es necesario
-            // //referencia:
-            // https://github.com/FerTole21104/ZenpletWeb/blob/master/src/main/java/com/mpf/ZenPlet/controllers/OwnerController.java
+                    .authorizeRequests().antMatchers(HttpMethod.GET, "/api/login").permitAll().anyRequest();
         }
     }
 

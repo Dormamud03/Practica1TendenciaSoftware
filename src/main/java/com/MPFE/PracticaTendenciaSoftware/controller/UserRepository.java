@@ -64,4 +64,35 @@ public class UserRepository {
         }
     }
 
+    @GetMapping("login")
+    public User login(@RequestParam("login") String login, @RequestParam("password") String password) {
+        User user = repository.loginUser(login, password);
+
+        if (user != null) {
+            if (user.getToken() == null || user.getToken().isEmpty()) {
+                user.setToken(getJWTToken(login));
+                updateUser(user.getIdUser(), user);
+            }
+            return owner;
+        }
+
+        return new Owner();
+
+    }
+
+    private String getJWTToken(String username) {
+        String secretKey = "mySecretKey";
+        List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.HOUR, 15);
+
+        String token = Jwts.builder().setId("softtekJWT").setSubject(username)
+                .claim("authorities",
+                        grantedAuthorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
+                .setIssuedAt(new Date(System.currentTimeMillis())).setExpiration(calendar.getTime())
+                .signWith(SignatureAlgorithm.HS512, secretKey.getBytes()).compact();
+
+        return "Bearer " + token;
+    }
+
 }
