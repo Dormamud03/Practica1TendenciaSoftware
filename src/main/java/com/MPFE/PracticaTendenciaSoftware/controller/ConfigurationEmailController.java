@@ -23,27 +23,27 @@ public class ConfigurationEmailController {
     @Autowired
     private configurationEmailRepository configurationEmailRepository;
 
-    @GetMapping("/configurationemail")
+    @GetMapping("/configuration-email")
     public List<ConfigurationEmail> getConfigEmail() {
         return configurationEmailRepository.findAll();
     }
 
-    @PostMapping("/save-configurationemail")
+    @PostMapping("/save-configuration-email")
     @ResponseBody
     public ConfigurationEmail saveConfigurationEmail(@RequestBody ConfigurationEmail configurationEmail) {
         return configurationEmailRepository.save(configurationEmail);
     }
 
-    @RequestMapping(value = "/configurationemail/id/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/configuration-email/id/{id}", method = RequestMethod.GET)
     public ConfigurationEmail getConfigurationEmailById(@PathVariable("id") long id) {
         return configurationEmailRepository.findById(id).orElse(new ConfigurationEmail());
     }
 
-    @RequestMapping(value = "/edit-configurationemail/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/edit-configuration-email/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public ConfigurationEmail updateConfigurationEmail(@PathVariable("id") long id,
             @RequestBody ConfigurationEmail configurationEmail) {
-        configurationEmail.setIdUser(id);
+        configurationEmail.setIdConfigurationEmail(id);
         return configurationEmailRepository.save(configurationEmail);
     }
 
