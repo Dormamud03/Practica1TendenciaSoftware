@@ -3,6 +3,8 @@ package com.MPFE.PracticaTendenciaSoftware.repository;
 import com.MPFE.PracticaTendenciaSoftware.model.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface userRepository extends JpaRepository<User, Long> {
 
