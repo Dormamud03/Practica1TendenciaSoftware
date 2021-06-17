@@ -1,12 +1,6 @@
 package com.MPFE.PracticaTendenciaSoftware.controller;
 
-<<<<<<< HEAD:src/main/java/com/MPFE/PracticaTendenciaSoftware/controller/EmailTemplatesController.java
 import java.util.List;
-=======
-
-import java.util.List;
-
->>>>>>> Fer1:src/main/java/com/MPFE/PracticaTendenciaSoftware/controller/BackCallController.java
 
 import com.MPFE.PracticaTendenciaSoftware.model.EmailTemplates;
 import com.MPFE.PracticaTendenciaSoftware.repository.emailTemplates;
