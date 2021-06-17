@@ -74,19 +74,21 @@ public class UserController {
         }
     }
 
-    /*
-     * @GetMapping("login") public User login(@RequestParam("login") String
-     * login, @RequestParam("password") String password) { User user =
-     * repository.loginUser(login, password);
-     * 
-     * if (user != null) { if (user.getToken() == null || user.getToken().isEmpty())
-     * { user.setToken(getJWTToken(login)); updateUser(user.getIdUser(), user); }
-     * return user; }
-     * 
-     * return new User();
-     * 
-     * }
-     */
+    @GetMapping("login")
+    public User login(@RequestParam("login") String login, @RequestParam("password") String password) {
+        User user = repository.loginUser(login, password);
+
+        if (user != null) {
+            if (user.getToken() == null || user.getToken().isEmpty()) {
+                user.setToken(getJWTToken(login));
+                updateUser(user.getIdUser(), user);
+            }
+            return user;
+        }
+
+        return new User();
+
+    }
 
     private String getJWTToken(String username) {
         String secretKey = "mySecretKey";
