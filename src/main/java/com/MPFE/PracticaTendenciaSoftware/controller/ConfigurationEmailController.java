@@ -39,13 +39,13 @@ public class ConfigurationEmailController {
     public ConfigurationEmail getConfigurationEmailById(@PathVariable("id") long id) {
         return configurationEmailRepository.findById(id).orElse(new ConfigurationEmail());
     }
-    //implementar getters and setters user y las demas entidades
-   /* @RequestMapping(value = "/edit-configuration-email/{id}", method = RequestMethod.PUT)
+
+    @RequestMapping(value = "/edit-configuration-email/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public ConfigurationEmail updateConfigurationEmail(@PathVariable("id") long id,
             @RequestBody ConfigurationEmail configurationEmail) {
-        configurationEmail.(id);
+        configurationEmail.setIdConfigEmail(id);
         return configurationEmailRepository.save(configurationEmail);
-    }*/
+    }
 
 }

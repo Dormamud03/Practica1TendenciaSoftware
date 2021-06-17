@@ -27,7 +27,7 @@ public class ConfigurationEmail {
 
     @Column(name = "host_email", nullable = false)
     private String hostEmail;
-    
+
     @Column(name = "port_email", nullable = false)
     private String portEmail;
 
@@ -38,7 +38,8 @@ public class ConfigurationEmail {
     public ConfigurationEmail() {
     }
 
-    public ConfigurationEmail(long idConfigEmail, String emailNotification, String passEmail, String hostEmail, String portEmail, Application application) {
+    public ConfigurationEmail(long idConfigEmail, String emailNotification, String passEmail, String hostEmail,
+            String portEmail, Application application) {
         this.idConfigEmail = idConfigEmail;
         this.emailNotification = emailNotification;
         this.passEmail = passEmail;
@@ -46,5 +47,89 @@ public class ConfigurationEmail {
         this.portEmail = portEmail;
         this.application = application;
     }
-    
+
+    /**
+     * @return long return the idConfigEmail
+     */
+    public long getIdConfigEmail() {
+        return idConfigEmail;
+    }
+
+    /**
+     * @param idConfigEmail the idConfigEmail to set
+     */
+    public void setIdConfigEmail(long idConfigEmail) {
+        this.idConfigEmail = idConfigEmail;
+    }
+
+    /**
+     * @return String return the emailNotification
+     */
+    public String getEmailNotification() {
+        return emailNotification;
+    }
+
+    /**
+     * @param emailNotification the emailNotification to set
+     */
+    public void setEmailNotification(String emailNotification) {
+        this.emailNotification = emailNotification;
+    }
+
+    /**
+     * @return String return the passEmail
+     */
+    public String getPassEmail() {
+        return passEmail;
+    }
+
+    /**
+     * @param passEmail the passEmail to set
+     */
+    public void setPassEmail(String passEmail) {
+        this.passEmail = passEmail;
+    }
+
+    /**
+     * @return String return the hostEmail
+     */
+    public String getHostEmail() {
+        return hostEmail;
+    }
+
+    /**
+     * @param hostEmail the hostEmail to set
+     */
+    public void setHostEmail(String hostEmail) {
+        this.hostEmail = hostEmail;
+    }
+
+    /**
+     * @return String return the portEmail
+     */
+    public String getPortEmail() {
+        return portEmail;
+    }
+
+    /**
+     * @param portEmail the portEmail to set
+     */
+    public void setPortEmail(String portEmail) {
+        this.portEmail = portEmail;
+    }
+
+    /**
+     * @return Application return the application
+     */
+    public Application getApplication() {
+        return application;
+    }
+
+    /**
+     * @param application the application to set
+     */
+    public void setApplication(Application application) {
+        this.application = application;
+    }
+
 }
