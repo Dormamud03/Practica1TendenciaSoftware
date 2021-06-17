@@ -28,7 +28,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin
-public class UserRepository {
+public class UserController {
 
     @Autowired
     private userRepository repository;
