@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -32,6 +33,9 @@ public class UserController {
 
     @Autowired
     private userRepository repository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/user")
     public List<User> getUser() {
@@ -70,21 +74,19 @@ public class UserController {
         }
     }
 
-    /*@GetMapping("login")
-    public User login(@RequestParam("login") String login, @RequestParam("password") String password) {
-        User user = repository.loginUser(login, password);
-
-        if (user != null) {
-            if (user.getToken() == null || user.getToken().isEmpty()) {
-                user.setToken(getJWTToken(login));
-                updateUser(user.getIdUser(), user);
-            }
-            return user;
-        }
-
-        return new User();
-
-    }*/
+    /*
+     * @GetMapping("login") public User login(@RequestParam("login") String
+     * login, @RequestParam("password") String password) { User user =
+     * repository.loginUser(login, password);
+     * 
+     * if (user != null) { if (user.getToken() == null || user.getToken().isEmpty())
+     * { user.setToken(getJWTToken(login)); updateUser(user.getIdUser(), user); }
+     * return user; }
+     * 
+     * return new User();
+     * 
+     * }
+     */
 
     private String getJWTToken(String username) {
         String secretKey = "mySecretKey";
@@ -99,6 +101,12 @@ public class UserController {
                 .signWith(SignatureAlgorithm.HS512, secretKey.getBytes()).compact();
 
         return "Bearer " + token;
+    }
+
+    @PostMapping("register")
+    public User register(@RequestBody User newUser) {
+        newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        return repository.save(newUser);
     }
 
 }
