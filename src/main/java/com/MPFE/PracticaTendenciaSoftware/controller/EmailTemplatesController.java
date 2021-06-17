@@ -2,6 +2,7 @@ package com.MPFE.PracticaTendenciaSoftware.controller;
 
 import java.util.List;
 
+import com.MPFE.PracticaTendenciaSoftware.model.EmailTemplates;
 import com.MPFE.PracticaTendenciaSoftware.repository.emailTempletesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,13 @@ public class EmailTemplatesController {
     private emailTempletesRepository repository;
 
     @GetMapping("/emailTemp")
-    public List<EmailTemplatesController> getEmailTempletes() {
+    public List<EmailTemplates> getEmailTempletes() {
         return repository.findAll();
     }
 
     @RequestMapping(value = "/emailTemp/id/{id}", method = RequestMethod.GET)
-    public EmailTemplatesController getEmailTempById(@PathVariable("id") long id) {
-        return repository.findById(id).orElse(new EmailTemplatesController());
+    public EmailTemplates getEmailTempById(@PathVariable("id") long id) {
+        return repository.findById(id).orElse(new EmailTemplates());
     }
 
 }
