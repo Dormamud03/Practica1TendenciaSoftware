@@ -35,11 +35,10 @@ public class User {
     @JoinColumn(name = "idapp", nullable = true)
     private Application application;
 
-
     @Column(name = "source", nullable = false)
     private String souerce;
 
-
+    @Column(name = "token", nullable = true)
     private String token;
 
     public User() {
