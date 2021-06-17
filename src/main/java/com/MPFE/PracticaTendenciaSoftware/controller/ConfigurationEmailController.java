@@ -2,6 +2,7 @@ package com.MPFE.PracticaTendenciaSoftware.controller;
 
 import java.util.List;
 
+import com.MPFE.PracticaTendenciaSoftware.model.ConfigurationEmail;
 import com.MPFE.PracticaTendenciaSoftware.repository.configurationEmailRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,13 +39,13 @@ public class ConfigurationEmailController {
     public ConfigurationEmail getConfigurationEmailById(@PathVariable("id") long id) {
         return configurationEmailRepository.findById(id).orElse(new ConfigurationEmail());
     }
-
-    @RequestMapping(value = "/edit-configuration-email/{id}", method = RequestMethod.PUT)
+    //implementar getters and setters user y las demas entidades
+   /* @RequestMapping(value = "/edit-configuration-email/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public ConfigurationEmail updateConfigurationEmail(@PathVariable("id") long id,
             @RequestBody ConfigurationEmail configurationEmail) {
-        configurationEmail.setIdConfigurationEmail(id);
+        configurationEmail.(id);
         return configurationEmailRepository.save(configurationEmail);
-    }
+    }*/
 
 }
