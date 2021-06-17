@@ -66,7 +66,7 @@ public class UserController {
         return repository.save(user);
     }
 
-    @RequestMapping(value = "/delete-app/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete-user/{id}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable("id") long id) {
         User user = repository.findById(id).get();
         if (user != null) {

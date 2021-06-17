@@ -30,7 +30,8 @@ public class PracticaTendenciaSoftwareApplication {
         protected void configure(HttpSecurity http) throws Exception {
             http.cors().and().csrf().disable()
                     .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-                    .authorizeRequests().antMatchers(HttpMethod.GET, "/api/login").permitAll().anyRequest();
+                    .authorizeRequests().antMatchers(HttpMethod.GET, "/api/login").permitAll().anyRequest()
+                    .authenticated();
         }
     }
 
